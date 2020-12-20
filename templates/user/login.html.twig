@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login de Users!{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+<h1>Login de Usuarios</h1>
+
+    {% if error %}
+        {{ error.messagekey|trans(error.messageData, 'Security') }}
+    {% endif %}
+
+    {% if app.user %}
+    {{ dump(app.user) }}
+    {% endif %}
+    
+
+  <form method="POST" action="{{ path('login') }}">
+
+    <label for="username">Email</label>
+    <input type="email" id="username" name="_username" value="{{ last_username }}">
+
+    <label for="password">Contraseña</label>
+    <input type="password" id="password" name="_password" value="{{ last_username }}">
+    <br>
+    <input type="submit" value="Entrar">
+
+</form>
+</div>
+{% endblock %}

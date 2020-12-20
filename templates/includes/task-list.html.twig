@@ -1,0 +1,43 @@
+  <table class="w3-table-all">
+    <thead>
+      <tr class="w3-red">
+        <th>Tarea</th>
+        <th>Prioridad</th>
+        <th>Horas Presupuestadas</th>
+        <th>Action</th>
+      </tr>
+
+      {% for task in tasks %}
+      <tr>
+        <th>{{ task.title }}</th>
+        <th>{{ task.priority }}</th>
+        <th>{{ task.hours }}</th>
+    
+        <th>
+          <a href="{{ path('task_detail', { id: task.id }) }}">
+            <img
+              src="https://img.icons8.com/color/48/000000/show-password.png"
+              class="img-icon"/>
+          </a>
+
+          {% if app.user %} 
+          
+            {% if app.user.id == task.user.id %}
+            <a href="{{ path('detele', { id: task.id }) }}">
+              <img
+                src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"
+                class="img-icon"/>
+            </a>
+            <a href="{{ path('edit_view', { id: task.id }) }}">
+              <img
+                src="https://img.icons8.com/dusk/64/000000/edit-column.png"
+                class="img-icon"/>
+            </a>
+            {% endif %} 
+          {% endif %}
+        </th>
+      </tr>
+      {% endfor %}
+
+    </thead>
+  </table>

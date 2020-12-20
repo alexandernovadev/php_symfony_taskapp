@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %} 
+{% block title %}All Tasks! {% endblock %}
+{%block body %}
+
+<div class="example-wrapper">
+  <h1>Editar Tareas</h1>
+
+  <form action="{{ path('editar') }}" class="w3-container">
+
+    <input class="w3-input w3-border" style="display: none;" name="id_task" value="{{ task.id }}" type="number">
+
+    <label class="w3-text-blue"><b>Titulo</b></label>
+    <input class="w3-input w3-border" name="titulo" value="{{ task.title }}" type="text">
+     
+    <label class="w3-text-blue"><b>Contenido</b></label>
+    <textarea name="content" id=""
+    class="w3-input w3-border" >
+    {{ task.content }}
+    </textarea>
+
+    <label class="w3-text-blue"><b>Prioridad</b></label>
+    <select class="w3-select" name="priority">
+      <option value="" disabled selected>Seleccione Opcion  </option>
+      <option value="Alta">Alta</option>
+      <option value="Media">Media</option>
+      <option value="Baja">Baja</option>
+    </select>
+
+    <label class="w3-text-blue"><b>Horas</b></label>
+    <input class="w3-input w3-border" name="horas" value="{{ task.hours }}" type="number">
+  <br>
+    
+    <button class="w3-btn w3-blue">Editar</button>
+
+  </form>
+  
+</div>
+{% endblock %}

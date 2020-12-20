@@ -1,0 +1,51 @@
+security:
+    encoders: 
+        App\Entity\User:
+            algorithm: bcrypt
+            cost: 4
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        in_memory: { memory: null }
+        proveedor:
+            entity:
+                class: App\Entity\User
+                property: email
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            form_login: 
+                login_path: login
+                check_path: login
+                provider: proveedor
+        
+            logout: 
+                path: /logout
+                target: /
+            # Logout me va a llevar a login cuando me salga de la app
+
+        # Eso de form login es para crear un sesion de user en symfony
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/editar, roles: ROLE_USER }
+        - { path: ^/edit_view, roles: ROLE_USER }
+        - { path: ^/crear, roles: ROLE_USER }
+        - { path: ^/crear_view, roles: ROLE_USER }
+        - { path: ^/delete, roles: ROLE_USER }
+        - { path: ^/task_detail, roles: ROLE_USER }
+        - { path: ^/task, roles: ROLE_USER }
+        - { path: ^/mistareas, roles: ROLE_USER }
+
+        # Rutas de seguridad con roles

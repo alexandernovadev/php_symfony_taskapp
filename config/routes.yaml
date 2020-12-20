@@ -1,0 +1,42 @@
+task:
+   path: /tareas
+   controller: App\Controller\TaskController::index
+
+mistareas:
+   path: /mistareas
+   controller: App\Controller\TaskController::mistareas
+
+task_detail:
+   path: /tarea/{id}
+   controller: App\Controller\TaskController::detail
+
+detele:
+   path: /delete/{id}
+   controller: App\Controller\TaskController::delete
+
+crear_view:
+   path: /crear_view
+   controller: App\Controller\TaskController::crear_view   
+
+crear:
+   path: /crear
+   controller: App\Controller\TaskController::crear   
+
+edit_view:
+   path: /edit/{id}
+   controller: App\Controller\TaskController::edit_view
+
+editar:
+   path: /editar
+   controller: App\Controller\TaskController::editar
+
+register:
+   path: /registro
+   controller: App\Controller\UserController::register
+
+login:
+   path: /
+   controller: App\Controller\UserController::login
+
+logout:
+   path: /logout

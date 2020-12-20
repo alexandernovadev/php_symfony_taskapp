@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		{% block stylesheets %}
+			<link type="text/css" rel="stylesheet" href="{{ asset('assets/css/estilos.css') }}">
+			<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+			
+		{% endblock %}
+	</head>
+	<body>
+		{% block header %}
+			<div class="cabeza">
+            <h1>Tareas Symfony</h1>
+			<ul class="menu">
+					<li><a href="{{ path('task') }}">Inicio</a></li>
+				{% if app.user %}
+					<li><a href="{{ path('mistareas') }}">Mis Tareas</a></li>
+					<li><a href="{{ path('crear_view') }}">Crear</a></li>
+					<li class="right"><a href="{{ path('logout') }}">Cerrar Sesion</a></li>
+					<li class="right"><a href="">{{ app.user.name ~ ' '~ app.user.surname }}</a></li>
+				{% else %}
+					<li><a href="{{ path('register') }}">Registro</a></li>
+					<li><a href="{{ path('login') }}">Login</a></li>
+				{% endif %}
+			</ul>
+			</div> <br>
+		{% endblock %}
+		{% block body %}{% endblock %}
+		{% block javascripts %}{% endblock %}
+	</body>
+</html>
